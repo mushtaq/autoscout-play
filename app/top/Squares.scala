@@ -29,6 +29,6 @@ object Squares {
   def streaming(numbers: Seq[Int]): Source[Int, NotUsed] = {
     val numberStream = Source(numbers.toList)
 
-    numberStream.mapAsync(5)(Square.nonBlocking)
+    numberStream.mapAsync(10)(Square.nonBlocking)
   }
 }

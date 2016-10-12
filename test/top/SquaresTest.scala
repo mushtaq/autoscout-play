@@ -1,6 +1,6 @@
 package top
 
-import akka.stream.scaladsl.Sink
+import akka.stream.scaladsl.{Keep, Sink}
 import org.scalatestplus.play.PlaySpec
 import utils.Config.executionContext
 import utils.Config.mat
@@ -37,10 +37,10 @@ class SquaresTest extends PlaySpec {
   }
 
   "streaming" in {
-    val resultF = Squares.streaming(1 to 20).runWith(Sink.ignore)
+    val resultF = Squares.streaming(1 to 20).runWith(Sink.seq)
     println("===============call returned================")
 
-    resultF.onComplete(println)
+    resultF.onComplete(x => println(s"---------------$x"))
 
     Await.ready(resultF, timeout)
   }

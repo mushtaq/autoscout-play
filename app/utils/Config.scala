@@ -8,7 +8,7 @@ import scala.concurrent.{ExecutionContextExecutorService, ExecutionContext}
 
 object Config extends Config(numberOfThreads = 4)
 
-object BlockingConfig extends Config(numberOfThreads = 4)
+object BlockingConfig extends Config(numberOfThreads = 40)
 
 class Config(numberOfThreads: Int) {
 

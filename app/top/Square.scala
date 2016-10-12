@@ -27,7 +27,7 @@ object Square {
   def async(a: Int): Future[Int] = Future {
 
     blocking(a)
-  }
+  }(BlockingConfig.executionContext)
 
   def nonBlocking(a: Int): Future[Int] = {
     println(s"begin (non-blocking) squaring $a")
